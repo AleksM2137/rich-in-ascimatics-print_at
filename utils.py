@@ -40,3 +40,10 @@ def print_coloured_at(screen, text, x, y, default_colour=Screen.COLOUR_WHITE):
     if pos < len(text):
         fragment = text[pos:]
         screen.print_at(fragment, curr_x, y, last_colour)
+def visible_length(text):
+    """
+    Zwraca długość tekstu bez znaczników [coś]...[/coś].
+    """
+    # Usuwa wszystkie [nazwa]...[/nazwa]
+    clean = re.sub(r'\[(\w+)\](.*?)\[/\1\]', r'\2', text)
+    return len(clean)
